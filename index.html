@@ -1577,12 +1577,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 (function(){
   var ids=["start", "projekt", "chat", "gedaechtnis", "angebote", "agenten", "agent-bauen", "datenmodus", "admin"];
   var USERS={
-    "christian.wallwiener":{pw:"wmc",first:"Christian",name:"Christian Wallwiener",init:"CW",role:"Geschäftsführer"},
-    "tibor.tinschmann":{pw:"wmc",first:"Tibor",name:"Dr. Tibor Tinschmann",init:"TT",role:"Partner"},
-    "sebastian.fenger":{pw:"wmc",first:"Sebastian",name:"Sebastian Fenger",init:"SF",role:"Projektleitung"},
-    "peter.werber":{pw:"wmc",first:"Peter",name:"Peter Werber",init:"PW",role:"Medizincontrolling"},
-    "alex.thiel":{pw:"wmc",first:"Alex",name:"Alex Thiel",init:"AT",role:"Master Mind"},
-    "demo":{pw:"wmc",first:"Gast",name:"Gast (Demo)",init:"G",role:"Beobachter"}
+    "christian.wallwiener":{pw:"wmcChristian2026",first:"Christian",name:"Christian Wallwiener",init:"CW",role:"Geschäftsführer"},
+    "tibor.tinschmann":{pw:"wmcTibor2026",first:"Tibor",name:"Dr. Tibor Tinschmann",init:"TT",role:"Partner"},
+    "sebastian.fenger":{pw:"wmcSebastian2026",first:"Sebastian",name:"Sebastian Fenger",init:"SF",role:"Projektleitung"},
+    "peter.werber":{pw:"wmcPeter2026",first:"Peter",name:"Peter Werber",init:"PW",role:"Medizincontrolling"},
+    "alex.thiel":{pw:"wmcAlex2026",first:"Alex",name:"Alex Thiel",init:"AT",role:"Master Mind"},
+    "demo":{pw:"wmcGast2026",first:"Gast",name:"Gast (Demo)",init:"G",role:"Beobachter"}
   };
   function getUser(){try{var k=localStorage.getItem("wmc_user");return k&&USERS[k]?USERS[k]:null}catch(e){return null}}
   function applyUser(u){
@@ -1607,7 +1607,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     var k=document.getElementById("lu").value.trim().toLowerCase().replace(/\s+/g,".");
     var p=document.getElementById("lp").value;
     var err=document.getElementById("lerr");
-    if(USERS[k]&&(p===USERS[k].pw||p==="")){try{localStorage.setItem("wmc_user",k)}catch(x){};err.hidden=true;show();}
+    if(USERS[k]&&p===USERS[k].pw){try{localStorage.setItem("wmc_user",k)}catch(x){};err.hidden=true;show();}
     else{err.hidden=false;}
   });
   var d=new Date(),hr=d.getHours();
