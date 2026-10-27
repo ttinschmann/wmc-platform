@@ -47,35 +47,36 @@ p{margin:0}
 /* App-Rahmen */
 .app{display:grid;grid-template-rows:auto 1fr;grid-template-columns:220px 1fr;min-height:100%}
 .topbar{grid-column:1/-1;position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line);
-  display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding-block:5px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .brand{display:flex;align-items:center;gap:10px;margin-right:auto}
-.brand .mark{width:28px;height:28px;border-radius:4px;background:var(--brand);position:relative}
+.brand .mark{width:24px;height:24px;border-radius:4px;background:var(--brand);position:relative}
 .brand .mark::after{content:"";position:absolute;inset:7px;border:2px solid #fff;border-radius:2px}
-.brand b{font-size:15px;letter-spacing:.02em}
-.brand span{color:var(--muted);font-size:13px}
+.brand b{font-size:14px;letter-spacing:.02em}
+.brand span{color:var(--muted);font-size:12px}
+@media (max-width:2000px){ .brand span{display:none} .brand{margin-right:4px} }
 .ctl{display:flex;align-items:center;gap:6px;font-size:12px}
 .ctl label{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
-.seg button{border:0;background:transparent;padding:5px 9px;cursor:pointer;font-size:12px;color:var(--fg2);border-right:1px solid var(--line)}
+.seg button{border:0;background:transparent;padding:4px 7px;cursor:pointer;font-size:11.5px;color:var(--fg2);border-right:1px solid var(--line)}
 .seg button:last-child{border-right:0}
 .seg button[aria-pressed="true"]{background:var(--fg2);color:#fff}
 .seg button:focus-visible,.btn:focus-visible,.tile:focus-visible,.navlink:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
-.datastat{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--surface);cursor:pointer;font-size:12px}
+.datastat{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--surface);cursor:pointer;font-size:11.5px}
 .dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--gruen)}
 .dot.gelb{background:var(--gelb)} .dot.rot{background:var(--rot)}
-.demo{background:var(--brand2);color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:3px;font-weight:600}
+.demo{background:var(--brand2);color:#fff;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:3px;font-weight:600}
 :root[data-theme="dark"] .demo, .dark .demo{color:var(--bg)}
 
-.side{background:var(--surface);border-right:1px solid var(--line);padding:14px 10px 20px max(10px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:2px}
-.side h3{padding:8px 10px 4px}
-.navlink{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:var(--radius);text-decoration:none;color:var(--fg2);font-size:13px;border:0;background:transparent;text-align:left;width:100%;cursor:pointer}
+.side{background:var(--surface);border-right:1px solid var(--line);padding:10px 10px 14px max(10px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:2px;position:sticky;top:var(--topH,0px);align-self:start;max-height:calc(100vh - var(--topH,0px));overflow-y:auto;scrollbar-width:thin}
+.side h3{padding:6px 10px 2px}
+.navlink{display:flex;align-items:center;gap:8px;padding:5px 10px;border-radius:var(--radius);text-decoration:none;color:var(--fg2);font-size:13px;border:0;background:transparent;text-align:left;width:100%;cursor:pointer}
 .navlink .id{font-family:var(--mono);font-size:11px;color:var(--muted);width:28px}
 .navlink:hover{background:var(--surface2)}
 .navlink.active{background:var(--fg2);color:#fff}
 .navlink.active .id{color:#fff;opacity:.8}
 .navlink .flag{margin-left:auto;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .navlink.active .flag{color:#fff;opacity:.8}
-.side .foot{margin-top:auto;padding:10px;font-size:11px;color:var(--muted);line-height:1.4}
+.side .foot{margin-top:8px;padding:8px 10px 0;font-size:11px;color:var(--muted);line-height:1.4}
 
 .main{padding-block:18px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
 .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:14px}
@@ -206,10 +207,22 @@ textarea{min-height:70px;resize:vertical}
 .gate div b{display:block;font-size:18px}
 .gate .ok{border-color:var(--gruen);background:var(--gruenbg)} .gate .warn{border-color:var(--gelb);background:var(--gelbbg)} .gate .bad{border-color:var(--rot);background:var(--rotbg)}
 
+/* S0: eine Bildschirmseite ohne Scrollen */
+.s0{display:flex;flex-direction:column;gap:10px}
+.s0 .head{margin-bottom:0} .s0 h1{font-size:19px}
+.s0 .card{padding:10px 12px} .s0 .tile{padding:9px 12px;gap:3px} .s0 .tile .t{font-size:14px} .s0 .tile .v{font-size:clamp(17px,1.4vw,21px)} .s0 .tile .d{font-size:12px;line-height:1.3} .s0 .tile .meta{padding-top:4px;font-size:10.5px}
+.s0 .kpi .v{font-size:19px} .s0 .kpi .l,.s0 .kpi .z{font-size:11px}
+.s0 .andon div{padding:5px 6px;font-size:11px} .s0 .andon{grid-template-columns:repeat(4,minmax(0,1fr))}
+.s0 .gate div{padding:6px} .s0 .gate div b{font-size:16px}
+.s0 .hs{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-align:left;cursor:pointer}
+.s0 .hs .kpi .v{font-size:30px}
+.main.s0main{padding-block:10px 12px}
 @media (max-width:1100px){ .g5{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(2,minmax(0,1fr))} .g32,.g21{grid-template-columns:1fr} .andon{grid-template-columns:repeat(4,minmax(0,1fr))} }
 @media (max-width:860px){
   .app{grid-template-columns:minmax(0,1fr)}
-  .side{border-right:0;min-width:0;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
+#login input:focus-visible,#login button:focus-visible{outline:2px solid #D55D05;outline-offset:2px}
+.app[hidden]{display:none}
+  .side{position:static;max-height:none;border-right:0;min-width:0;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
   .side h3,.side .foot{display:none}
   .navlink{white-space:nowrap;width:auto;padding:6px 10px}
   .navlink .flag{display:none}
@@ -220,8 +233,6 @@ textarea{min-height:70px;resize:vertical}
 @media (max-width:560px){ .g5,.g4,.g3,.g2{grid-template-columns:1fr} .andon{grid-template-columns:repeat(2,minmax(0,1fr))} .opt{grid-template-columns:28px 1fr} .opt .btn{grid-column:2}
   .topbar{gap:8px 12px} .ctl{flex-wrap:wrap;max-width:100%} .seg{flex-wrap:wrap;max-width:100%} .seg button{border-right:0;border-bottom:1px solid var(--line)} .brand span{display:none} .app{grid-template-columns:minmax(0,1fr)} .side{max-width:100vw} }
 @media (prefers-reduced-motion:reduce){ .tile{transition:none} .toast{transition:none} }
-#login input:focus-visible,#login button:focus-visible{outline:2px solid #D55D05;outline-offset:2px}
-.app[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -588,22 +599,22 @@ R.S0 = () => {
   const andon = [['ZNA','gelb'],['Stationen','gelb'],['ICU/IMC','rot'],['OP','gruen'],['Diagnostik','rot'],['Abfluss','gelb'],['Transport','gelb'],['Personal','gelb']];
   const top3 = D.kacheln.filter(x=>x.st==='rot').slice(0,3);
   const hs=D.hausstatus; const hst=hs.stufen.find(x=>hs.score>=x[0]&&hs.score<=x[1]);
-  return head('S0','Wie gesund ist mein Haus?', `${D.haus.name} · ${D.haus.datum}, ${D.haus.zeitpunkt} · Gesamtlage ${stat('gelb','GELB')} · ${rot} von 10 Engpässen rot · Lage Stufe ${S.lage}`) +
-  `<div class="stack">
-    <button class="card stripe ${hst[3]}" id="hsBtn" style="text-align:left;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center"><div class="kpi"><span class="l">Hausstatus-Score</span><span class="v num" style="font-size:34px">${hs.score}</span><span class="z muted">0 bis 100, regelbasiert</span></div><div><div><b>${hst[2]}</b> · 10 Parameter mit Punktetabelle, kein Bauchgefühl</div><div class="small muted">Treiber: Boarder > 4 h (3 Punkte), Belegung 94 % (2), ICU 92 % (2), Patienten > 12 h ZNA (2), Entlassbestätigung 21 % (2). Stand ${hs.stand}, Neubewertung bis ${hs.naechste}.</div><div class="row" style="margin-top:6px">${vb('NHS OPEL 2024-26, Score-Logik')}<span class="xs muted">Klick zeigt die Punktetabelle</span></div></div><div class="small">${S.lage===0?stat('gelb','Empfehlung: Lagestufe 1 prüfen'):stat('blau','Lage Stufe '+S.lage+' gesetzt')}</div></button>
-    <div class="card" style="padding:10px 14px"><div class="row between"><h3 style="margin:0">Andon-Leiste je Bereich</h3>${vb('Automotive, Toyota Andon')}</div><div class="andon" style="margin-top:8px">${andon.map(a=>`<div class="${a[1]}" title="Klick öffnet das Engpass-Radar">${a[0]}</div>`).join('')}</div></div>
-    <div class="grid g5">${felder.map(f=>`<button class="tile ${f.st}" data-go="${f.go[0]}" data-filter="${f.go[1]||''}"><div class="t">${f.t}</div><div class="v num">${f.v}</div><div class="d">${f.d}</div>${spark(f.sp,160,34,{label:'7-Tage-Trend'})}<div class="meta"><span>${f.b}</span><span>→ ${f.go[0]}</span></div></button>`).join('')}</div>
-    <div class="grid g32">
-      <div class="card"><div class="row between"><h3>Wochenrückblick, Plan gegen Ist (4 Wochen)</h3><span class="xs muted">Sparklines, letzte Woche rechts</span></div>
-        <div class="grid g4" style="margin-top:6px">
-          ${[['Fälle',o.woche.faelle,'Plan 108/Wo'],['Case Mix',o.woche.cm,'Plan 128/Wo'],['CMI',o.woche.cmi.map(x=>x.toFixed(2)),'Plan 1,195'],['VWD (Tage)',o.woche.vwd,'InEK 5,9']].map(r=>`<div class="kpi"><span class="l">${r[0]}</span><span class="v num">${de(r[1][3])}</span>${spark(r[1].map(Number),120,30)}<span class="z muted">${r[2]}</span></div>`).join('')}
-        </div></div>
-      <div class="card"><h3>Top 3 offene Maßnahmen</h3><div class="stack">${top3.map(t=>`<div class="stripe ${t.st}" style="padding:4px 10px"><b>${esc(t.titel)}</b><div class="small muted">${esc(t.eig)} · ${esc(t.frist)} · ${t.status}</div></div>`).join('')}</div>
-        <div style="margin-top:10px"><button class="btn sm" data-go="S1">Alle 10 Kacheln</button> <button class="btn sm" data-go="S11">Huddle 08:00 vorbereiten</button></div></div>
-    </div>
-    <div class="card flat"><div class="row between"><div class="small"><b>Entlass-Gates heute</b> <span class="muted">(Vortag 15:00 markiert · 09:00 bestätigt · 11:00 Patient hat das Bett verlassen)</span></div>${vb('Luftfahrt, Stabilized-Approach-Gates')}</div>
-      <div class="gate" style="margin-top:8px"><div class="ok"><b class="num">${k.eg}</b>Gate 1: markiert (Vortag 15:00)</div><div class="warn"><b class="num">${k.eb} / ${k.eg}</b>Gate 2: bestätigt (bis 09:00)</div><div class="bad"><b class="num">0 / ${k.eg}</b>Gate 3: erfolgt (bis 11:00)</div></div></div>
-  </div>`;
+  return `<div class="s0">` + head('S0','Wie gesund ist mein Haus?', `${D.haus.name} · ${D.haus.datum}, ${D.haus.zeitpunkt} · Gesamtlage ${stat('gelb','GELB')} · ${rot} von 10 Engpässen rot · Lage Stufe ${S.lage}`) +
+  `<div class="grid g32">
+    <button class="card stripe ${hst[3]} hs" id="hsBtn"><div class="kpi"><span class="l">Hausstatus-Score</span><span class="v num">${hs.score}</span><span class="z muted">0 bis 100, regelbasiert</span></div><div><div class="small"><b>${hst[2]}</b> · 10 Parameter mit Punktetabelle</div><div class="xs muted">Treiber: Boarder > 4 h (3), Belegung 94 % (2), ICU 92 % (2), > 12 h ZNA (2), Entlassbestätigung 21 % (2). Stand ${hs.stand}, Neubewertung bis ${hs.naechste}. Klick zeigt die Punktetabelle.</div><div class="row" style="margin-top:4px">${vb('NHS OPEL 2024-26, Score-Logik')}</div></div><div class="small">${S.lage===0?stat('gelb','Lagestufe 1 prüfen'):stat('blau','Lage Stufe '+S.lage)}</div></button>
+    <div class="card"><div class="row between"><h3 style="margin:0 0 6px">Andon-Leiste je Bereich</h3>${vb('Toyota Andon')}</div><div class="andon">${andon.map(a=>`<div class="${a[1]}" title="Klick öffnet das Engpass-Radar">${a[0]}</div>`).join('')}</div></div>
+  </div>
+  <div class="grid g5">${felder.map(f=>`<button class="tile ${f.st}" data-go="${f.go[0]}" data-filter="${f.go[1]||''}"><div class="t">${f.t}</div><div class="v num">${f.v}</div><div class="d">${f.d}</div>${spark(f.sp,150,24,{label:'7-Tage-Trend'})}<div class="meta"><span>${f.b}</span><span>→ ${f.go[0]}</span></div></button>`).join('')}</div>
+  <div class="grid g3">
+    <div class="card"><div class="row between"><h3>Wochenrückblick, Plan gegen Ist (4 Wochen)</h3></div>
+      <div class="grid g2" style="gap:8px 12px">
+        ${[['Fälle',o.woche.faelle,'Plan 108/Wo'],['Case Mix',o.woche.cm,'Plan 128/Wo'],['CMI',o.woche.cmi.map(x=>x.toFixed(2)),'Plan 1,195'],['VWD (Tage)',o.woche.vwd,'InEK 5,9']].map(r=>`<div class="kpi" style="flex-direction:row;align-items:center;gap:10px"><div><span class="l">${r[0]}</span><br><span class="v num">${de(r[1][3])}</span> <span class="z muted">${r[2]}</span></div>${spark(r[1].map(Number),90,26)}</div>`).join('')}
+      </div></div>
+    <div class="card"><h3>Top 3 offene Maßnahmen</h3><div class="stack" style="gap:6px">${top3.map(t=>`<div class="stripe ${t.st}" style="padding:2px 10px"><b class="small">${esc(t.titel)}</b><div class="xs muted">${esc(t.eig)} · ${esc(t.frist)} · ${t.status}</div></div>`).join('')}</div>
+      <div class="row" style="margin-top:8px"><button class="btn sm" data-go="S1">Alle 10 Kacheln</button><button class="btn sm" data-go="S11">Huddle 08:00</button></div></div>
+    <div class="card flat"><div class="row between"><h3>Entlass-Gates heute</h3>${vb('Luftfahrt, Stabilized Approach')}</div><p class="xs muted" style="margin-bottom:6px">Vortag 15:00 markiert · 09:00 bestätigt · 11:00 Bett verlassen</p>
+      <div class="gate"><div class="ok"><b class="num">${k.eg}</b>Gate 1 markiert</div><div class="warn"><b class="num">${k.eb} / ${k.eg}</b>Gate 2 bestätigt</div><div class="bad"><b class="num">0 / ${k.eg}</b>Gate 3 erfolgt</div></div></div>
+  </div></div>`;
 };
 
 R.S1 = () => {
@@ -820,6 +831,8 @@ R.S14 = () => head('S14','Benchmark','Ausbaustufe.') + `<div class="placeholder"
 /* =============================================================
    Rendering, Navigation, globale Leiste
    ============================================================= */
+function syncTopH(){const t=document.querySelector('.topbar'); if(t) document.documentElement.style.setProperty('--topH', t.offsetHeight+'px');}
+window.addEventListener('resize', syncTopH);
 function buildTop(){
   const seg=(el,items,cur,fn)=>{ el.innerHTML=items.map(i=>`<button aria-pressed="${String(i)===String(cur)}" data-v="${i}">${i}</button>`).join(''); el.querySelectorAll('button').forEach(b=>b.onclick=()=>fn(b.dataset.v)); };
   seg($('#segEbene'),EBENEN,S.ebene,v=>{ S.ebene=v; if(v!=='Haus') go('S10'); else render(); buildTop(); });
@@ -829,6 +842,7 @@ function buildTop(){
   $('#datastat').onclick=()=>go('S12');
   $('#vbInfo').onclick=()=>openModal('Übertragene Steuerungsmuster aus anderen Industrien', `<p class="small">Was dieses Cockpit von einem BI-Dashboard unterscheidet. Jedes Element trägt im Cockpit eine „Vorbild“-Markierung (Kopfzeile: Vorbilder an).</p><div class="tscroll"><table><thead><tr><th>Element</th><th>Herkunft</th><th>Mechanik</th><th>Quelle</th></tr></thead><tbody>${D.vorbilder.map(v=>`<tr><td><b>${v[0]}</b></td><td class="xs">${v[1]}</td><td class="xs">${v[2]}</td><td class="xs"><a href="${v[3]}" target="_blank" rel="noopener">Link</a></td></tr>`).join('')}</tbody></table></div>`);
   $('#vbToggle').onclick=()=>{ document.body.classList.toggle('showvb'); $('#vbToggle').textContent='Vorbilder: '+(document.body.classList.contains('showvb')?'an':'aus'); };
+  syncTopH();
 }
 function buildSide(cur){
   const groups=[['Management',['S0','S8','S9']],['Leitstand',['S1','S2','S3','S4','S5','S6','S7']],['Verbund und Organisation',['S10','S11','S12','S13','S14']]];
@@ -837,7 +851,7 @@ function buildSide(cur){
 function render(){
   let id = (location.hash||'#S0').replace('#',''); if(!R[id]){ id='S0'; }
   buildSide(id);
-  const m=$('#main'); m.innerHTML = R[id]();
+  const m=$('#main'); m.classList.toggle('s0main', id==='S0'); m.innerHTML = R[id]();
   m.querySelectorAll('[data-go]').forEach(b=>b.onclick=(e)=>{ e.preventDefault(); go(b.dataset.go, b.dataset.filter||null); });
   m.querySelectorAll('[data-clear]').forEach(a=>a.onclick=(e)=>{ e.preventDefault(); S.filter=null; render(); });
   m.querySelectorAll('[data-kachel]').forEach(b=>b.onclick=()=>kachelDetail(D.kacheln.find(k=>k.id===+b.dataset.kachel)));
